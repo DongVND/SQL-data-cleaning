@@ -1,4 +1,4 @@
-# SQL-data-cleaning
+###STEP 1: SQL-data-cleaning
 ```SQL
 SELECT * FROM club_member_info cmi 
 LIMIT 10;
@@ -16,7 +16,7 @@ LIMIT 10;
 |mendie alexandrescu|46|single|malexandrescu8@state.gov|504-918-4753|34 Delladonna Terrace,New Orleans,Louisiana|Systems Administrator III|3/12/1921|
 | fey kloss|52|married|fkloss9@godaddy.com|808-177-0318|8976 Jackson Park,Honolulu,Hawaii|Chemical Engineer|11/5/2014|
 
-# We created a new table and copied data from the original data so they will not affect the root one
+### STEP 2: We created a new table and copied data from the original data so they will not affect the root one
 ```SQL
 CREATE TABLE club_member_info_cleaned (
 	full_name VARCHAR(50),
