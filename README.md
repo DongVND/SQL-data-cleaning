@@ -35,3 +35,15 @@ CREATE TABLE club_member_info_cleaned (
 INSERT INTO club_member_info_cleaned
 SELECT * FROM club_member_info ;
 ```
+
+### STEP 4: found that Data has unnecessary whitespaces, we use TRIM to clean leading and trailing them.
+```SQL
+UPDATE club_member_info_cleaned 
+SET full_name = TRIM(LOWER(full_name));
+```
+
+### STEP 5: we can't call MEDIAN function directly in SQLite. However, this syntax could be applied by doing subqueries
+```SQL
+UPDATE club_member_info_cleaned 
+SET age = (Select Median(age) FROM club_member_info_cleaned) WHERE age >100 or age ISNULL;
+```
