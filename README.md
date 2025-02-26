@@ -36,7 +36,7 @@ INSERT INTO club_member_info_cleaned
 SELECT * FROM club_member_info ;
 ```
 
-### STEP 4: found that Data has unnecessary whitespaces, we use TRIM to clean leading and trailing them.
+### STEP 4: found that Data has unnecessary whitespaces, we use TRIM to clean leading and trailing whitespaces.
 ```SQL
 UPDATE club_member_info_cleaned 
 SET full_name = TRIM(LOWER(full_name));
@@ -59,7 +59,7 @@ WHERE martial_status = 'married';
 ##### Let's update the missing value martial_status by 'married'
 ```SQL
 UPDATE club_member_info_cleaned 
-SET martial_status = 'married' WHERE martial_status ='';
+SET martial_status = 'married' WHERE martial_status ='' OR martial_status ISNULL;
 ```
 ### STEP 7: update mis-typo martial status 'divored' by 'divorced'
 ```SQL
