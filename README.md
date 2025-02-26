@@ -47,3 +47,22 @@ SET full_name = TRIM(LOWER(full_name));
 UPDATE club_member_info_cleaned 
 SET age = (Select Median(age) FROM club_member_info_cleaned) WHERE age >100 or age ISNULL;
 ```
+
+### STEP 6: since there are some missing value for martial_status. We count the number of each available catagories
+```SQL
+SELECT COUNT (*)
+FROM club_member_info_cleaned
+WHERE martial_status = 'married';
+```
+#####The query above is for 'married' status. Same syntax for 'single' and 'divorced'
+#####We found that the dominated group is 'married' with 881 counts.
+##### Let's update the missing value martial_status by 'married'
+```SQL
+UPDATE club_member_info_cleaned 
+SET martial_status = 'married' WHERE martial_status ='';
+```
+### STEP 7: update mis-typo martial status 'divored' by 'divorced'
+```SQL
+UPDATE club_member_info_cleaned 
+SET martial_status = 'divorced' WHERE martial_status ='divored';
+```
